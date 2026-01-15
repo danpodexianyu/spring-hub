@@ -26,4 +26,11 @@ class UserTest {
         User user3 = context.getBean("user", User.class);
         log.info("3. 根据id和类型获取Bean: {}", user3);
     }
+
+    @Test
+    void testDI() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        User user = context.getBean("zhangsan", User.class);
+        log.info("{}", user);
+    }
 }
