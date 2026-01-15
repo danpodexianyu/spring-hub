@@ -11,6 +11,7 @@
     <modules>
         <module>spring-hub-quickstart</module>
         <module>spring-hub-ioc-xml</module>
+        <module>spring-hub-ioc-annotation</module>
     </modules>
 
     <properties>
