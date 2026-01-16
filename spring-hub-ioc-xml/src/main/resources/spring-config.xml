@@ -4,8 +4,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="user" class="org.example.User"/>
+
     <bean id="zhangsan" class="org.example.User">
         <property name="username" value="张三"/>
         <property name="age" value="18"/>
     </bean>
+
+    <!-- scope: 定义Bean的作用范围 -->
+    <!-- 1. singleton as default -->
+    <!-- 2. prototype -->
+    <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl" scope="prototype"/>
+
+    <bean id="bookService" class="org.example.service.impl.BookServiceImpl">
+        <property name="bookDao" ref="bookDao"/>
+    </bean>
+
 </beans>
