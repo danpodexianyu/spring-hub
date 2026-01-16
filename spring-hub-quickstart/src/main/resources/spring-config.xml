@@ -7,5 +7,7 @@
     <!-- 2. 配置Bean -->
     <!-- 注意: bean在定义时, id属性在同一个上下文中不能重复 -->
     <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/>
-    <bean id="bookService" class="org.example.service.impl.BookServiceImpl"/>
+    <bean id="bookService" class="org.example.service.impl.BookServiceImpl">
+        <property name="bookDao" ref="bookDao"/>
+    </bean>
 </beans>
