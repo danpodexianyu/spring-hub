@@ -19,4 +19,10 @@
         <property name="bookDao" ref="bookDao"/>
     </bean>
 
+
+    <!-- 方式一、构造方法实例化bean -->
+    <!-- <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/> -->
+
+    <!-- 方式二、使用静态工厂实例化bean-->
+    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao" />
 </beans>
