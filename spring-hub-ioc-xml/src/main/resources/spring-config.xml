@@ -24,5 +24,9 @@
     <!-- <bean id="bookDao" class="org.example.dao.impl.BookDaoImpl"/> -->
 
     <!-- 方式二、使用静态工厂实例化bean-->
-    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao" />
+    <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao"/>
+
+    <!-- 方式三、使用实例工厂实例化bean -->
+    <bean id="userDaoFactory" class="org.example.factory.UserDaoFactory" />
+    <bean id="userDao" factory-bean="userDaoFactory" factory-method="createUserDao" />
 </beans>
