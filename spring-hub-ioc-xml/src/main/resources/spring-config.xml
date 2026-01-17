@@ -27,6 +27,9 @@
     <bean id="orderDao" class="org.example.factory.OrderDaoFactory" factory-method="getOrderDao"/>
 
     <!-- 方式三、使用实例工厂实例化bean -->
-    <bean id="userDaoFactory" class="org.example.factory.UserDaoFactory" />
-    <bean id="userDao" factory-bean="userDaoFactory" factory-method="createUserDao" />
+    <bean id="userDaoFactory" class="org.example.factory.UserDaoFactory"/>
+    <bean id="userDao" factory-bean="userDaoFactory" factory-method="createUserDao"/>
+
+    <!-- 方式四、使用FactoryBean实例化bean-->
+    <bean id="userDaoFactoryBean" class="org.example.factory.UserFactoryBean"/>
 </beans>
