@@ -23,4 +23,11 @@ class BookServiceTest {
         log.info("{}", bookDao1);
         log.info("{}", bookDao2);
     }
+
+    @Test
+    void testBeanInstance() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config.xml");
+        BookDao bookDao = ctx.getBean(BookDao.class);
+        bookDao.save();
+    }
 }

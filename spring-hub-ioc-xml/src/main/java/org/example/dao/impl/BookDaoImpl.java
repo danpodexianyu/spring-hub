@@ -8,6 +8,10 @@ public class BookDaoImpl implements BookDao {
 
     private static final Logger log = LoggerFactory.getLogger(BookDaoImpl.class);
 
+    public BookDaoImpl() {
+        log.info("Book dao constructor is running...");
+    }
+
     @Override
     public void save() {
         log.info("book dao save...");
