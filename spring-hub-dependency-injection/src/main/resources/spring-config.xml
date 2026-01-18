@@ -4,12 +4,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- Constructor-based dependency injection -->
     <!-- Definition for spellChecker bean -->
     <bean id="spellChecker" class="org.example.SpellChecker"/>
 
     <!-- Definition for TextEditor bean -->
     <bean id="textEditor" class="org.example.TextEditor">
         <constructor-arg name="spellChecker" ref="spellChecker"/>
+    </bean>
+
+    <!-- Setter-based dependency injection -->
+    <bean id="setterBasedTextEditor" class="org.example.SetterBasedTextEditor">
+        <property name="spellChecker" ref="spellChecker"/>
     </bean>
 
 </beans>
