@@ -13,6 +13,7 @@
         <module>spring-hub-ioc-xml</module>
         <module>spring-hub-ioc-annotation</module>
         <module>spring-hub-bean-lifecycle</module>
+        <module>spring-hub-dependency-injection</module>
     </modules>
 
     <properties>
