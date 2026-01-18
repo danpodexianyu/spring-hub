@@ -14,6 +14,7 @@
         <module>spring-hub-ioc-annotation</module>
         <module>spring-hub-bean-lifecycle</module>
         <module>spring-hub-dependency-injection</module>
+        <module>spring-hub-beans-auto-wiring</module>
     </modules>
 
     <properties>
