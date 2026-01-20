@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="injectingCollection" class="org.example.InjectingCollection">
+        <property name="addressList">
+            <list>
+                <value>CHENGDU</value>
+                <value>CHONGQING</value>
+                <value>SHENZHEN</value>
+                <value>CHENGDU</value>
+            </list>
+        </property>
+
+        <property name="addressSet">
+            <set>
+                <value>CHENGDU</value>
+                <value>CHONGQING</value>
+                <value>SHENZHEN</value>
+                <value>CHENGDU</value>
+            </set>
+        </property>
+
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="CHENGDU"/>
+                <entry key="2" value="GUANGZHOU"/>
+                <entry key="3" value="SHANGHAI"/>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="1">CHENGDU</prop>
+                <prop key="2">CHONGQING</prop>
+                <prop key="3">SHANGHAI</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
