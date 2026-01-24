@@ -18,6 +18,7 @@
         <module>spring-hub-injecting-collection</module>
         <module>spring-hub-datasouce</module>
         <module>spring-hub-mybatis</module>
+        <module>spring-hub-aop</module>
     </modules>
 
     <properties>
