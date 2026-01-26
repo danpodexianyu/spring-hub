@@ -34,6 +34,7 @@
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-spring.version>4.0.0</mybatis-spring.version>
         <HikariCP.version>7.0.2</HikariCP.version>
+        <aspectjweaver.version>1.9.25.1</aspectjweaver.version>
     </properties>
 
     <dependencyManagement>
@@ -120,6 +121,14 @@
                 <artifactId>HikariCP</artifactId>
                 <version>${HikariCP.version}</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <!-- Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+<!--                <scope>runtime</scope>-->
             </dependency>
         </dependencies>
     </dependencyManagement>
