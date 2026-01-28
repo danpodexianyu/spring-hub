@@ -20,6 +20,7 @@
         <module>spring-hub-mybatis</module>
         <module>spring-hub-aop</module>
         <module>spring-hub-aop-example</module>
+        <module>spring-hub-tx</module>
     </modules>
 
     <properties>
