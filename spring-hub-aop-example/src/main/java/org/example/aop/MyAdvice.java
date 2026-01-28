@@ -13,13 +13,14 @@ import org.springframework.stereotype.Component;
 public class MyAdvice {
 
     @Pointcut("execution(* org.example.service.*Service.*(..))")
-    private void calcDurationPoint() {}
+    private void calcDurationPoint() {
+    }
 
     @Around("calcDurationPoint()")
     public Object calcDuration(ProceedingJoinPoint pjp) throws Throwable {
         long start = System.currentTimeMillis();
         Object obj = pjp.proceed();
-        log.info("Method: {} , execute cost: {}ms", pjp.getSignature().getName(), System.currentTimeMillis() - start);
+        log.info("{}.{} , execute cost: {}ms", pjp.getSignature().getDeclaringTypeName(), pjp.getSignature().getName(), System.currentTimeMillis() - start);
         return obj;
     }
 
