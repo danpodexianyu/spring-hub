@@ -11,4 +11,10 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
+    @Override
+    public void transfer(String out, String in, Double money) {
+        accountMapper.outMoney(out, money);
+        // int i = 1 / 0;
+        accountMapper.outMoney(in, money);
+    }
 }
