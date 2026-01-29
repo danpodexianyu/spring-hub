@@ -1,11 +1,30 @@
 package org.example.mvc.config;
 
 import org.springframework.lang.Nullable;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ServletContainersInitConfig extends AbstractDispatcherServletInitializer {
+public class ServletContainersInitConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    @Nullable
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{SpringConfig.class};
+    }
+
+    @Nullable
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{SpringMvcConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
+}
+
+
+/*public class ServletContainersInitConfig extends AbstractDispatcherServletInitializer {
 
     // 加载 SpringMVC 容器配置
     @Override
@@ -25,6 +44,8 @@ public class ServletContainersInitConfig extends AbstractDispatcherServletInitia
     @Nullable
     @Override
     protected WebApplicationContext createRootApplicationContext() {
-        return null;
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(SpringConfig.class);
+        return ctx;
     }
-}
+}*/
