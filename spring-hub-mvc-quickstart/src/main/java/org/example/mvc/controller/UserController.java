@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Slf4j
 @Controller
 public class UserController {
@@ -22,5 +25,18 @@ public class UserController {
     public String hello(@RequestParam("name") String name) {
         log.info("{}", name);
         return "{\"greeting\": \"Hello World\"}";
+    }
+
+    @RequestMapping("/arrayParams")
+    @ResponseBody
+    public String arrayParams(@RequestParam("likes") String[] likes) {
+        log.info("{}", Arrays.toString(likes));
+        return Arrays.toString(likes);
+    }
+
+    @RequestMapping("/listParams")
+    @ResponseBody
+    public String listParams(@RequestParam("likes") List<String> likes) {
+        return likes.toString();
     }
 }
