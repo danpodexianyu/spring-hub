@@ -9,30 +9,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller
+@RequestMapping("/users")
+@ResponseBody
 public class RestfulController {
 
-    // creation
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST)
     public String create() {
-        // do something
         return "user:create";
     }
 
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public String getById(@PathVariable("userId") Long userId) {
         return "user:query";
     }
 
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.DELETE)
-    @ResponseBody
+    @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("userId") Long userId) {
         return "user:delete";
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.PUT)
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.PUT)
     public String update() {
         return "user:update";
     }
