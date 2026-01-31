@@ -22,6 +22,7 @@
         <module>spring-hub-aop-example</module>
         <module>spring-hub-tx</module>
         <module>spring-hub-mvc-quickstart</module>
+        <module>spring-hub-mvc-restful-case</module>
     </modules>
 
     <properties>
