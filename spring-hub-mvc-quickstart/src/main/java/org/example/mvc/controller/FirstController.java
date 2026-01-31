@@ -8,8 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FirstController {
 
+    @RequestMapping("/")
+    public String toIndex() {
+        return "index";
+    }
+
     @RequestMapping("test")
     public String hello() {
         return "first";
+    }
+
+    @RequestMapping("jumpToOtherView")
+    public String jumpToOtherView() {
+        return "other";
     }
 }
