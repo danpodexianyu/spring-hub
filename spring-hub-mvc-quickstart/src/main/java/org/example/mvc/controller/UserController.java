@@ -1,7 +1,9 @@
 package org.example.mvc.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.mvc.entity.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,5 +40,19 @@ public class UserController {
     @ResponseBody
     public String listParams(@RequestParam("likes") List<String> likes) {
         return likes.toString();
+    }
+
+
+    // json params
+    @RequestMapping("/jsonListParams")
+    @ResponseBody
+    public String jsonListParams(@RequestBody List<String> likes) {
+        return likes.toString();
+    }
+
+    @RequestMapping("/pojoParamsForJson")
+    @ResponseBody
+    public String pojoParamsForJson(@RequestBody User user) {
+        return user.toString();
     }
 }
