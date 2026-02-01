@@ -3,7 +3,10 @@ package org.request.params.example.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 @Controller
 public class RequestScopeShareController {
@@ -20,6 +23,18 @@ public class RequestScopeShareController {
     @RequestMapping("/testModel")
     public String testModel(Model model) {
         model.addAttribute("message", "Request scope sharing via Model");
+        return "request-scope-share";
+    }
+
+    @RequestMapping("/testMap")
+    public String testMap(Map<String, Object> map) {
+        map.put("message", "Request scope sharing via Map");
+        return "request-scope-share";
+    }
+
+    @RequestMapping("/testModelMap")
+    public String testModelMap(ModelMap modelMap) {
+        modelMap.put("message", "Request scope sharing via ModelMap");
         return "request-scope-share";
     }
 
