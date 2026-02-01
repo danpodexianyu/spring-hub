@@ -23,6 +23,7 @@
         <module>spring-hub-tx</module>
         <module>spring-hub-mvc-quickstart</module>
         <module>spring-hub-mvc-request-mapping</module>
+        <module>spring-hub-mvc-request-params</module>
     </modules>
 
     <properties>
