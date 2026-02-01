@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -36,6 +37,25 @@ public class RequestScopeShareController {
     public String testModelMap(ModelMap modelMap) {
         modelMap.put("message", "Request scope sharing via ModelMap");
         return "request-scope-share";
+    }
+
+    @RequestMapping("/testModelAndView")
+    public ModelAndView testModelAndView() {
+        /*
+         * 注意：
+         * 1. 方法的返回值类型不是String，而是ModelAndView对象
+         * 2. ModelAndView对象是通过new创建的
+         * 3. 需要调用addObject方法向域中存储数据
+         * 4. 需要调用setViewName方法设置视图的名字
+         * */
+        // 创建ModelAndView对象
+        ModelAndView modelAndView = new ModelAndView();
+        // 绑定数据
+        modelAndView.addObject("message", "ModelAndView");
+        // 绑定视图
+        modelAndView.setViewName("request-scope-share");
+        // 返回
+        return modelAndView;
     }
 
 }
