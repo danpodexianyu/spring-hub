@@ -1,6 +1,7 @@
 package org.request.params.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.request.params.example.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,13 @@ public class IndexController {
         log.info("gender: {}", gender);
         log.info("hobbies: {}", Arrays.toString(hobbies));
         log.info("intro: {}", intro);
+        return "OK";
+    }
+
+    @PostMapping("/registerByPojo")
+    @ResponseBody
+    public String registerByPojo(User user) {
+        log.info("{}", user);
         return "OK";
     }
 

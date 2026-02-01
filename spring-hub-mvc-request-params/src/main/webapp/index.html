@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>注册</h2>
-<form th:action="@{/register}" method="post">
+<form th:action="@{/registerByPojo}" method="post">
     <label>
         用户名:
         <input type="text" name="username">
@@ -28,8 +28,8 @@
 
     爱好:
     <label>
-        网球 <input type="checkbox" name="hobby" value="tennis">
-        篮球 <input type="checkbox" name="hobby" value="basketball">
+        网球 <input type="checkbox" name="hobbies" value="tennis">
+        篮球 <input type="checkbox" name="hobbies" value="basketball">
     </label>
     <br/>
 
