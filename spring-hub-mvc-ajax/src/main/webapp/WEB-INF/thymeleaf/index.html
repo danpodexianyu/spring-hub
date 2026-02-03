@@ -15,6 +15,22 @@
 </div>
 
 <script th:inline="javascript">
+    /*Vue.createApp({
+        data() {
+            return {
+                message: "请点击按钮获取消息"
+            }
+        },
+        methods: {
+            async getMessage() {
+                let response = await axios.get([[@{/ajax}]])
+                this.message = response.data
+            }
+        }
+    }).mount("#app")*/
+
+    let obj = {"id": 1, "username": "zhangsan"}
+
     Vue.createApp({
         data() {
             return {
@@ -23,8 +39,11 @@
         },
         methods: {
             async getMessage() {
-                console.log("Hello World")
-                let response = await axios.get([[@{/ajax}]])
+                let response = await axios.post([[@{/users}]], JSON.stringify(obj), {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
                 this.message = response.data
             }
         }
