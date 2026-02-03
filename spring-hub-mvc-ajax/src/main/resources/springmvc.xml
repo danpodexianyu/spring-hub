@@ -26,7 +26,7 @@
                 <property name="templateResolver">
                     <bean class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
                         <!-- 设置模板文件的位置 -->
-                        <property name="prefix" value="/"/>
+                        <property name="prefix" value="/WEB-INF/thymeleaf/"/>
                         <!-- 设置模板文件的后缀，Thymeleaf文件扩展名不一定是html，也可能是其他。如txt，但大部分是html -->
                         <property name="suffix" value=".html"/>
                         <!-- 设置模板类型 -->
@@ -38,6 +38,9 @@
             </bean>
         </property>
     </bean>
+
+    <!-- 视图控制器 -->
+    <mvc:view-controller path="/" view-name="index"/>
 
     <!-- 静态资源处理 -->
     <mvc:default-servlet-handler/>
