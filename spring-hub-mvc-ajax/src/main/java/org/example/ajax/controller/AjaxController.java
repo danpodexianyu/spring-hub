@@ -1,11 +1,11 @@
 package org.example.ajax.controller;
 
 import org.example.ajax.entity.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+// @Controller
+@RestController
 public class AjaxController {
 
     /*@GetMapping("/ajax")
@@ -15,7 +15,7 @@ public class AjaxController {
     }*/
 
     @GetMapping("/ajax")
-    @ResponseBody
+    // @ResponseBody
     public User ajax() {
         return new User(1L, "张三");
     }
