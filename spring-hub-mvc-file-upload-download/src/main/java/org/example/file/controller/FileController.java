@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -62,7 +63,9 @@ public class FileController {
             uploadFolder.mkdir();
         }
         // 获取输入流
-        File destFile = new File(uploadFolder.getAbsolutePath() + "/" + originalFileName);
+        // File destFile = new File(uploadFolder.getAbsolutePath() + "/" + originalFileName);
+        String fileName = UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
+        File destFile = new File(uploadFolder.getAbsolutePath() + "/" + fileName);
         // 封装成带有缓冲区的输入流
         return new BufferedOutputStream(new FileOutputStream(destFile));
     }
