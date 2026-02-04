@@ -2,8 +2,13 @@ package org.example.file.controller;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.UUID;
 
 @Slf4j
@@ -52,6 +58,18 @@ public class FileController {
         bis.close();
 
         return ResponseEntity.ok("ok");
+    }
+
+    @GetMapping("/download")
+    public ResponseEntity<byte[]> download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        File file = new File(request.getServletContext().getRealPath("/upload") + "/1.jpg");
+        // 创建响应头对象
+        HttpHeaders headers = new HttpHeaders();
+        // 设置响应内容类型
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        // 设置下载文件的文件名
+        headers.setContentDispositionFormData("attachment", file.getName());
+        return new ResponseEntity<>(Files.readAllBytes(file.toPath()), headers, HttpStatus.OK);
     }
 
     private static BufferedOutputStream getBufferedOutputStream(HttpServletRequest request, String originalFileName) throws FileNotFoundException {
