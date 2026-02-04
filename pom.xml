@@ -28,6 +28,7 @@
         <module>spring-hub-mvc-ajax</module>
         <module>spring-hub-mvc-file-upload-download</module>
         <module>spring-hub-mvc-interceptor</module>
+        <module>spring-hub-mvc-annotation</module>
     </modules>
 
     <properties>
