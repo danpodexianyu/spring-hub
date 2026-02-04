@@ -27,6 +27,7 @@
         <module>spring-hub-mvc-static-assets</module>
         <module>spring-hub-mvc-ajax</module>
         <module>spring-hub-mvc-file-upload-download</module>
+        <module>spring-hub-mvc-interceptor</module>
     </modules>
 
     <properties>
