@@ -47,6 +47,12 @@
     <!-- 拦截器 -->
     <mvc:interceptors>
         <!-- <bean class="org.example.interceptor.interceptors.MyInterceptor"/> -->
-        <ref bean="myInterceptor"/>
+        <!-- <ref bean="myInterceptor"/> -->
+        <!-- 拦截器高级配置 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/test"/>
+            <ref bean="myInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
