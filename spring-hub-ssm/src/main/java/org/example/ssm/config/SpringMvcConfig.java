@@ -1,0 +1,66 @@
+package org.example.ssm.config;
+
+import org.example.ssm.interceptors.MyInterceptor;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
+
+@Configuration
+@ComponentScan("org.example.ssm.controller")
+@EnableWebMvc
+public class SpringMvcConfig implements WebMvcConfigurer {
+
+    @Bean
+    public ThymeleafViewResolver thymeleafViewResolver(SpringTemplateEngine springTemplateEngine) {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(springTemplateEngine);
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setOrder(1);
+        return resolver;
+    }
+
+    @Bean
+    public SpringTemplateEngine springTemplateEngine(ITemplateResolver iTemplateResolver) {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(iTemplateResolver);
+        return templateEngine;
+    }
+
+    @Bean
+    public ITemplateResolver iTemplateResolver(ApplicationContext applicationContext) {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/thymeleaf/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        resolver.setCharacterEncoding("UTF-8");
+        return resolver;
+    }
+
+    // 开启静态资源处理
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/hello");
+    }
+}
